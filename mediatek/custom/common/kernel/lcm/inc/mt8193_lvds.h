@@ -130,8 +130,8 @@ typedef enum
 // DGI0 (Base Address:+400h/+500h)
 // 1.Basic setting
 #define DGI0_DEC_CTRL      0x0400
-  #define RESET_COUNTER      0x08000000  //[27] reset the counter for timing generate
-  #define CLEAR_COUNTER      0x00000000
+  #define RESET_COUNTER      0x08008000  //[27] reset the counter for timing generate
+  #define CLEAR_COUNTER      0x00008000
 	
 #define DGI0_FIFO_CTRL     0x0404
   #define SW_RST             0x00080000  //[19] soft reset
@@ -304,6 +304,8 @@ typedef enum
   #define RG_PLL1_DIV3	     0x00000006  //[3:0] rg_pll1_div
 
 #define REG_LVDS_ANACFG0   0x1310
+  #define RG_LVDS_APD        0xf8000000  //[31:27]
+  #define RG_LVDS_BIASA_PD   0x02000000  //[25]
   #define RG_LVDS_ATERM_EN   0x00800000  //[24:23]00: No source termination; 10: 1k Ohm termination; 01: 100 Ohm termination; 11: 90 Ohm termination;
   #define RG_LVDS_APSRC      0x00400000  //[22:20]LVDS A Group P Slew Rate Control; Strongest: 000; Weakest: 111
   #define RG_LVDS_ANSRC      0x00070000  //[19:17]LVDS A Group N Slew Rate Control; Strongest: 111; Weakest: 000
@@ -322,7 +324,9 @@ typedef enum
   #define RG_VPLL_BIC        0x02000000  //[26:24]Integral path charge pump current
   #define RG_VPLL_BIR        0x00200000  //[23:20]Proportional path charge pump current 
   #define RG_VPLL_BP         0x00010000  //[19:16]Power down for VOPLL Bias
+  #define RG_VPLL_BG_PD      0x00008000  //[15]Power down for Bandgap
   #define RG_VPLL_BR         0x00005000  //[14:12]Proportional path res value
+  #define RG_VPLL_BIAS_PD    0x00000800  //[11]Power down for VOPLL Bias
 
 #define REG_LVDS_ANACFG3   0x131c
   #define RG_VPLL_DIV        0x00040000  //[21:17]Divider setting
@@ -331,7 +335,9 @@ typedef enum
   #define RG_VPLL_MKVCO      0x00000040  //[7]VCO Range From    160 MHz~ 390 MHz
 
 #define REG_LVDS_ANACFG4   0x1320
+  #define RG_VPLL_RST        0x00800000  //[23]
   #define RG_T2TTLO_EN       0x00000800  //[11]
+  #define RG_VPLL_PD         0x00000400  //[10]  
   #define RG_BYPASS          0x00000200  //[9]mini clock by pass phase interpolater
   #define RG_LVDS_BYPASS     0x00000100  //[8]
   
